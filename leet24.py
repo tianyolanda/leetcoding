@@ -32,9 +32,11 @@ head4 = ListNode(4)
 head5 = ListNode(5)
 
 head1.next = head2
-# head2.next = head3
+head2.next = head3
 # head3.next = head4
 # head4.next = head5
-
-so = Solution()
-so.swapPairs(head1)
+print(head1,head2)
+head1,head2 = head2,head1
+print(head1.next,head1.val,head2.next,head2.val)
+# so = Solution()
+# so.swapPairs(head1)
