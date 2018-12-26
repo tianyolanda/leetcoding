@@ -13,7 +13,7 @@ class Solution(object):
         r = len(nums) - 1
         last_t_l = -1
         last_t_r = -1
-        while r > l:
+        while r >= l:
             mid = (l + r) >> 1
             if nums[mid] == target:
                 t_l = mid - 1
@@ -40,7 +40,7 @@ class Solution(object):
                         continue
                     if nums[t_rmid] > target:
                         r, t_r = t_rmid - 1, last_t_r
-                if last_t_r == t_r - 1:
+                if last_t_r == t_r - 1 and t_r < len(nums):
                     if nums[t_r] == target:
                         last_t_r = t_r
                 break
@@ -50,10 +50,14 @@ class Solution(object):
             if nums[mid] < target:
                 l = mid + 1
 
+        if last_t_l == -1 :last_t_l = last_t_r
+        if last_t_r == -1 :last_t_r = last_t_l
+
+
         return [last_t_l, last_t_r]
 
 
 so = Solution()
-print(so.searchRange([1,2,3,3,3,3,4,5,9],
-3))
+print(so.searchRange([8],
+8))
 # print(math.ceil(0.88))
